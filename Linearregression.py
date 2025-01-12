@@ -14,7 +14,7 @@ def compute_cost(X, y, w, b):
     total_cost = (1 / (2 * m)) * cost_sum
     return total_cost
 
-def compute_gradient(X, y, w, b):
+def compute_gradient(X, y, w,   b):
     m = X.shape[0]
     dw = 0
     db = 0
