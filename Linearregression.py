@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 X, y = make_regression(n_samples=100, n_features=1, noise=10, random_state=42)
+print(X.shape)
 
 def compute_cost(X, y, w, b):
     m = X.shape[0]
