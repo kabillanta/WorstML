@@ -36,6 +36,22 @@ def compute_gradients(X, y, w, b):
     db = 1/m * np.sum(y_pred - y)
     return dw, db
 
+def compute_gradient_logistic(X, y, w, b): 
+    m,n = X.shape
+    dj_dw = np.zeros((n,))                           #(n,)
+    dj_db = 0.
+
+    for i in range(m):
+        f_wb_i = sigmoid(np.dot(X[i],w) + b)          #(n,)(n,)=scalar
+        err_i  = f_wb_i  - y[i]                       #scalar
+        for j in range(n):
+            dj_dw[j] = dj_dw[j] + err_i * X[i,j]      #scalar
+        dj_db = dj_db + err_i
+    dj_dw = dj_dw/m                                   #(n,)
+    dj_db = dj_db/m                                   #scalar
+        
+    return dj_db, dj_dw  
+
 def train_logistic_regression(X, y, lr=0.01, epochs=1000):
     w, b = initialize_weights(X.shape[1])
     costs = []
