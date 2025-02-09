@@ -15,20 +15,16 @@ x_test = x_test.reshape(-1, 784)
 
 # Define the model
 model = Sequential([
-    Dense(10, activation='relu', input_shape=(784,)),  # Input layer
-    Dense(10, activation='relu'),                      # Hidden layer
-    Dense(10, activation='softmax')                    # Output layer
+    Dense(10, activation='relu', input_shape=(784,)),  
+    Dense(10, activation='relu'),                      
+    Dense(10, activation='softmax')                    
 ])
 
-# Compile the model
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-# Print the model summary
 model.summary()
 
-# Train the model (TensorFlow will automatically use the GPU if available)
 model.fit(x_train, y_train, epochs=5, batch_size=32)
 
-# Evaluate the model
 loss, accuracy = model.evaluate(x_test, y_test)
 print(f"Loss: {loss}, Accuracy: {accuracy}")
